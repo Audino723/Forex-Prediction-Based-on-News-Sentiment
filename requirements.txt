@@ -1,4 +1,4 @@
 scikit-learn==1.2.2
 streamlit==1.24.0
 bs4==0.0.1
-openpypxl==3.1.2
+openpyxl==3.1.2
