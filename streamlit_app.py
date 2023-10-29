@@ -15,20 +15,6 @@ st.set_page_config(
     layout="wide"
 )
 st.title('💱 Forex Price Prediction')
-col_capt_1, col_capt_2 = st.columns([1,1])
-with col_capt_1:
-    st.caption('by: Rio Audino')
-with col_capt_2:
-    st.caption('Find more about me here: linkedin.com/in/rio-audino/')
-
-# Setup Session State
-if "run_process" not in st.session_state:
-    st.session_state["run_process"] = False
-    st.session_state["download-csv"] = False
-    st.session_state["config"] = ""
-
-def run_process():
-    st.session_state["run_process"] = True
 
 # Setup model page
 tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
