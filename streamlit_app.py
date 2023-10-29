@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 from models.model import predict_price
+from utils.constant import *
 
 # Setup Page
 st.set_page_config(
@@ -30,7 +31,7 @@ def run_process():
     st.session_state["run_process"] = True
 
 # Setup model page
-tab1, tab2 = st.tabs(["News Text", "Excel File"])
+tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
 
 with tab1:
     st.header("Predict Forex Price using Single News")
@@ -87,3 +88,31 @@ with tab2:
             
             st.dataframe(df_predict)
 
+            df_predict.to_excel(PREDICTION_OUTPUT_PATH, index=False)
+
+            with open(PREDICTION_OUTPUT_PATH, "rb") as template_file:
+                template_byte = template_file.read()
+            st.download_button(
+                label="Click to Download Prediction Result",
+                data=template_byte,
+                file_name="prediction_result.xlsx",
+                mime='application/octet-stream'
+            )
+
+
+    
+
+with tab3:
+    st.header("Excel File Template for Prediction")
+        
+    df = pd.read_excel(DATA_EXAMPLE_PATH)   
+    st.dataframe(df)
+    
+    with open(DATA_EXAMPLE_PATH, "rb") as template_file:
+            template_byte = template_file.read()
+    st.download_button(
+        label="Click to Download Template File",
+        data=template_byte,
+        file_name="template.xlsx",
+        mime='application/octet-stream'
+    )
