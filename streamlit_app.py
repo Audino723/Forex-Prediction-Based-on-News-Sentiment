@@ -14,7 +14,7 @@ st.set_page_config(
     },
     layout="wide"
 )
-st.title('💱 Forex Price Prediction')
+st.title('💱 ChatDXY')
 
 # Setup model page
 tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
