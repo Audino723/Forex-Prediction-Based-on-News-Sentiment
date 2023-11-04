@@ -22,28 +22,31 @@ tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
 with tab1:
     st.header("Predict Forex Price using Single News")
     
-    user_input = st.text_area('Enter your string here:', height = 200)
+    user_input = st.text_area('Enter your string here (Please enter at least 300 character): ', height = 200)
     if st.button('Predict', key="predict_single"):
-        st.header("Prediction Result")
-        df_predict, average = predict_price(user_input)
-        st.write('')
+        if len(user_input) > 300:
+            st.header("Prediction Result")
+            df_predict, average = predict_price(user_input)
+            st.write('')
 
-        if average == "Bullish":
-            st.markdown('''
-                <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                    Model's today prediction is Bullish
-                </div>
-            ''', unsafe_allow_html=True)
+            if average == "Bullish":
+                st.markdown('''
+                    <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        Model's today prediction is Bullish
+                    </div>
+                ''', unsafe_allow_html=True)
+            else:
+                st.markdown('''
+                    <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        Model's today prediction is Bearish
+                    </div>
+                ''', unsafe_allow_html=True)
+
+            st.write('')
+            
+            st.dataframe(df_predict)
         else:
-            st.markdown('''
-                <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                    Model's today prediction is Bearish
-                </div>
-            ''', unsafe_allow_html=True)
-
-        st.write('')
-        
-        st.dataframe(df_predict)
+            st.error("Please enter at least 300 characters")
 
 with tab2:
     st.header("Predict Forex Price using Multiple News")
