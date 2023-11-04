@@ -32,13 +32,13 @@ with tab1:
             if average == "Bullish":
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                        Model's today prediction is Bullish
+                        Model's today prediction for DXY is Bullish
                     </div>
                 ''', unsafe_allow_html=True)
             else:
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                        Model's today prediction is Bearish
+                        Model's today prediction for DXY  is Bearish
                     </div>
                 ''', unsafe_allow_html=True)
 
@@ -63,13 +63,13 @@ with tab2:
             if average == "Bullish":
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                        Model's today prediction is Bullish
+                        Model's today prediction for DXY  is Bullish
                     </div>
                 ''', unsafe_allow_html=True)
             else:
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
-                        Model's today prediction is Bearish
+                        Model's today prediction for DXY is Bearish
                     </div>
                 ''', unsafe_allow_html=True)
 
