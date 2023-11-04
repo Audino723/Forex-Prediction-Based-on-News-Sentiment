@@ -22,7 +22,7 @@ tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
 with tab1:
     st.header("Predict Forex Price using Single News")
     
-    user_input = st.text_area('Enter your string here (Please enter at least 300 character): ', height = 200)
+    user_input = st.text_area('Enter your news here (Please enter at least 300 character): ', height = 200)
     if st.button('Predict', key="predict_single"):
         if len(user_input) > 300:
             st.header("Prediction Result")
