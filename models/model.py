@@ -35,15 +35,19 @@ def predict_price(news):
 
     predictions = classifier.predict(test_mactrix)
     average = predictions.mean()
+    
 
     news["Model Predictions"] = predictions
     news["Model Predictions"] = news["Model Predictions"].apply(lambda x: "Bullish" if int(x) == 1 else "Bearish")
 
+    percentage = average if average > 0.5 else 1 - average
+    percentage *= 100
+    percentage = round(percentage, 2)
     average = "Bullish" if average > 0.5 else "Bearish"
 
     news = news.drop(columns=["cleaned_news"])
 
-    return news, average
+    return news, average, percentage
 
 if __name__ == "__main__":
     print("This is a module, not a script.")

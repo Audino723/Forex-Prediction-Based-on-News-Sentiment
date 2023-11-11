@@ -14,7 +14,7 @@ st.set_page_config(
     },
     layout="wide"
 )
-st.title('💱 ChatDXY')
+st.title('💱 CheckDXY')
 
 # Setup model page
 tab1, tab2, tab3 = st.tabs(["News Text", "Excel File", "Excel File Template"])
@@ -57,7 +57,7 @@ with tab2:
 
         if st.button('Predict', key="predict_df"):
             st.header("Prediction Result")
-            df_predict, average = predict_price(df)
+            df_predict, average, percentage = predict_price(df)
             st.write('')
 
             if average == "Bullish":
@@ -66,10 +66,20 @@ with tab2:
                         Model's today prediction for DXY  is Bullish
                     </div>
                 ''', unsafe_allow_html=True)
+                st.markdown(f'''
+                    <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        %Bullish : {percentage}%
+                    </div>
+                ''', unsafe_allow_html=True)
             else:
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
                         Model's today prediction for DXY is Bearish
+                    </div>
+                ''', unsafe_allow_html=True)
+                st.markdown(f'''
+                    <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        %Bearish : {percentage}%
                     </div>
                 ''', unsafe_allow_html=True)
 
