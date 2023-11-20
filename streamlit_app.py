@@ -26,7 +26,7 @@ with tab1:
     if st.button('Predict', key="predict_single"):
         if len(user_input) > 300:
             st.header("Prediction Result")
-            df_predict, average = predict_price(user_input)
+            df_predict, average, percentage = predict_price(user_input)
             st.write('')
 
             if average == "Bullish":
@@ -35,10 +35,20 @@ with tab1:
                         Model's today prediction for DXY is Bullish
                     </div>
                 ''', unsafe_allow_html=True)
+                st.markdown(f'''
+                    <div style="height: 60px; width: 100%; background-color: #52a447; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        %Bullish : {percentage}%
+                    </div>
+                ''', unsafe_allow_html=True)
             else:
                 st.markdown('''
                     <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
                         Model's today prediction for DXY  is Bearish
+                    </div>
+                ''', unsafe_allow_html=True)
+                st.markdown(f'''
+                    <div style="height: 60px; width: 100%; background-color: #e74c3c; border-radius: 10px; display: flex; justify-content: flex-start; align-items: center; color: white; font-size: 24px; padding-left: 20px; margin: 10px;">
+                        %Bearish : {percentage}%
                     </div>
                 ''', unsafe_allow_html=True)
 
